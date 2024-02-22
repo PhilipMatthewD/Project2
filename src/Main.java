@@ -1,18 +1,23 @@
 import java.util.Scanner;
-import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        ArrayList<String> tasks = new ArrayList<>();
         String userInput = choiceDetect();
-        while(!(userInput.equals("0"))){
+        ToDo list = null;
+        while (!(userInput.equals("0"))) {
 
-            if(userInput.equals("1")){
-                System.out.println("What would you like to add to tasks?");
-                tasks.add(input.nextLine());
+            if (userInput.equals("1")) {
+                System.out.println("What is the title of the task?");
+                String title = input.nextLine();
+                System.out.println("What is the description of the task?");
+                String desc = input.nextLine();
+                System.out.println("What is the priority of the task?");
+                int priority = input.nextInt();
+                list = new ToDo(title, desc, priority);
                 userInput = choiceDetect();
             }
-
+            /*
             if(userInput.equals("2")){
                 System.out.println("What task do you want to remove?");
                 tasks.remove(input.nextLine());
@@ -38,7 +43,9 @@ public class Main {
                 System.out.println("That is not a function, try again or type 5 for help.");
                 userInput = choiceDetect();
             }
+             */
         }
+        System.out.println(list);
     }
     static String choiceDetect(){
         Scanner a = new Scanner(System.in);
